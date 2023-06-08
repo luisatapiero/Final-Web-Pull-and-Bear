@@ -19,6 +19,10 @@ $grey: #555355;
 
 }
 
+.ul,li{
+    list-style: none;
+}
+
 .containerPrincipal {
 
     @include flex-column();
