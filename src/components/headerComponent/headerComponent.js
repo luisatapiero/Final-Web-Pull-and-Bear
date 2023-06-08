@@ -5,7 +5,7 @@ class HeaderComponent extends HTMLElement {
 
     constructor() {
         super();
-        
+
     }
 
     // This methos is called once the component is created in DOM
@@ -95,13 +95,57 @@ class HeaderComponent extends HTMLElement {
             d="M12.5005 8.62248V4.81124C12.5283 2.73574 10.9288 1.02961 8.92744 1C6.92605 1.02961 5.32654 2.73574 5.35436 4.81124V8.62248"
             stroke="#FAFBFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
-      </li>
+
+        <div id="carrito">
+          <table id="lista-carrito">
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="carrito-body"></tbody>
+          </table>
+          <a href="#" id="vaciar-carrito" class="btn-3">Vaciar Carrito</a>
+        </div>
+      
     </header>
           `;
 
         const button = this.querySelector('button')
         console.log(button)
         button.addEventListener('click', () => this.handleButton())
+
+
+        const carrito = this.querySelector('#carrito');
+        const carritoBody = this.querySelector('#carrito-body');
+        const products = JSON.parse(localStorage.getItem('cart-products')) || [];
+
+        carritoBody.innerHTML = ''; // Limpiar el contenido existente
+
+        products.forEach((product) => {
+            const row = document.createElement('tr');
+
+            const imageCell = document.createElement('td');
+            const nameCell = document.createElement('td');
+            const priceCell = document.createElement('td');
+
+            imageCell.innerHTML = `<img src="${product.imagen}" alt="${product.name}" width="50" height="50">`;
+            nameCell.textContent = product.name;
+            priceCell.textContent = product.precio;
+
+            row.appendChild(imageCell);
+            row.appendChild(nameCell);
+            row.appendChild(priceCell);
+
+            carritoBody.appendChild(row);
+        });
+
+        carrito.addEventListener('click', () => {
+            carrito.classList.toggle('hidden');
+          });
 
     }
 
@@ -113,6 +157,8 @@ class HeaderComponent extends HTMLElement {
             logOut()
         }
     }
+
+
 
 
 }
