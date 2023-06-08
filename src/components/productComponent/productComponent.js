@@ -178,30 +178,42 @@ class ProductComponent extends HTMLElement {
       popup.style.display = 'none';
       console.log('fuera');
     });
-    
+
+
+    /*Función de Agregar al Carrito*/
+
     addToBagBtn.addEventListener('click', () => {
       let products = [];
-
+    
       if (localStorage.getItem("cart-products"))
         products = JSON.parse(localStorage.getItem("cart-products"));
-
-      const currentProd = products.find(prod => prod.name === this.name);
-
+        
+      const colorSelect = this.shadowRoot.getElementById('colour');
+      const sizeSelect = this.shadowRoot.getElementById('size');
+      const selectedColor = colorSelect.options[colorSelect.selectedIndex].text;
+    
+      const currentProd = products.find(prod => prod.name === this.name && prod.url_1 === this.url_1 && prod.precio === this.precio && prod.size === sizeSelect.value && prod.color === selectedColor);
+      
       if (currentProd) {
         const amount = parseInt(currentProd.quantity)
         currentProd.quantity = amount + parseInt(inputQuantity.value);
       } else {
         products.push({
           quantity: parseInt(inputQuantity.value),
-          name: this.name
+          name: this.name,
+          imagen: this.url_1,
+          precio: this.price,
+          size: sizeSelect.value,
+          color: selectedColor
         });
       }
-
+    
       localStorage.setItem('cart-products', JSON.stringify(products));
     });
-    
 
   }
+
+/*---------------------------- */
 
   attributeChangeCallback(propName, oldValue, newValue) {
     this[propName] = newValue;
