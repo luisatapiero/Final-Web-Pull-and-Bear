@@ -69,13 +69,18 @@
 
    <div class="containerPrincipal">
     <div class="form-group">
+      <label for="username">Name: </label>
       <input id="nombre" type="name" class="form-control" name="username" placeholder="Nombre">
-      <input id="usuario" type="user" class="form-control" name="usernick" placeholder="Usuario">
+      <label for="email">Email: </label>
       <input id="correo" type="email" class="form-control" name="useremail" placeholder="Correo">
+      <label for="password">Password: </label>
       <input id="contrasena" type="password" class="form-control" name="userpassword" placeholder="Contraseña">
-      <p><a href="#">Ya tengo Cuenta</a></p>
+      <label for="picture">Profile picture: </label>
+      <input type="file" name="picture" id="picture-input" accept="image/*">
+
+      <p>Already have an account?<a href="/login.html">Sign In</a></p>
     <br>
-    <button id="boton-registro" class="boton">Crear Cuenta</button>
+    <button id="boton-registro" class="boton">CREATE ACCOUNT</button>
     </div>
    </div> 
 </body>
