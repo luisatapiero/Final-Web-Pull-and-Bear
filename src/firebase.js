@@ -18,3 +18,13 @@ const auth = getAuth(app);
 const storage = getStorage(app); // Agrega esta línea para obtener la instancia de Firebase Storage
 
 export { db, auth, storage }; // Agrega `storage` a los elementos exportados
+
+
+export async function logOut() {
+
+  try {
+      await signOut(auth)
+  } catch (error) {
+      console.error(error)
+  };
+}

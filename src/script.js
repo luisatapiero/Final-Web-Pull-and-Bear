@@ -179,7 +179,7 @@ buttonleft.addEventListener("click", e => {
     }
 })
 
-const navBtn = document.querySelector('.nav-burger');
+/*const navBtn = document.querySelector('.nav-burger');
 const nav = document.getElementById('main-nav');
 
 navBtn.addEventListener('click', () => {
@@ -192,7 +192,7 @@ nav.addEventListener('click', () => {
     navBtn.classList.remove('hidden');
     nav.classList.toggle('hidden')
     
-});
+});*/
 
 /* 
   const nav = document.querySelector('#nav'); //Tendrias que mirar cual es el id que usas en el nav

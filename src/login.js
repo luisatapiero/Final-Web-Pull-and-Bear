@@ -5,8 +5,6 @@ const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('contrasena');
 const loginButton = document.getElementById('btn-login');
 
-if (loginButton) {
-
 loginButton.addEventListener('click', async () => {
 
     try {
@@ -34,45 +32,3 @@ loginButton.addEventListener('click', async () => {
           }
     }
 });
-
-}
-
-// Obtener el elemento del botón de cierre de sesión
-const logoutButton = document.getElementById('logout-button');
-
-// Verificar si el elemento logout-button existe en la página actual
-if (logoutButton) {
-  // Función para mostrar el botón de cierre de sesión
-  function showLogoutButton() {
-    logoutButton.style.display = 'block';
-  }
-
-  // Función para ocultar el botón de cierre de sesión
-  function hideLogoutButton() {
-    logoutButton.style.display = 'none';
-  }
-
-  // Escuchar el cambio de estado de autenticación
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // El usuario ha iniciado sesión
-      showLogoutButton();
-    } else {
-      // El usuario no ha iniciado sesión
-      hideLogoutButton();
-    }
-  });
-
-  // Agregar evento de clic al botón de cierre de sesión
-  logoutButton.addEventListener('click', async () => {
-    try {
-      await signOut(auth);
-      alert('Has cerrado sesión correctamente');
-      // El usuario ha cerrado sesión correctamente
-      // Realiza las acciones adicionales que desees después del cierre de sesión
-    } catch (error) {
-      console.error(error);
-      alert('Error al cerrar sesión');
-    }
-  });
-}
