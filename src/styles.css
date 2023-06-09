@@ -1652,7 +1652,7 @@ video {
   
 }
 
-#logueado button{
+#logout-button{
   font-family: "Oswald";
   font-style: normal;
   font-weight: 400;
@@ -1673,11 +1673,44 @@ video {
 
 }
 
-#logueado button:hover{
+#logout-button:hover{
   cursor: pointer;
   color: #0a0a0a;
   background-color: #e43d3d;
   border: 3px solid #e43d3d;
+  border-radius: 3px;
+  justify-content: center;
+  transition: 0.2s;
+
+}
+
+
+#admin-button{
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 0px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 80px;
+  height: 35px;
+  color: #4dc855;
+  background-color: transparent;
+  border: 2px solid #4dc855;
+  border-radius: 3px;
+  justify-content: center;
+  transition: 0.2s;
+
+}
+
+#admin-button:hover{
+  cursor: pointer;
+  color: #0a0a0a;
+  background-color: #4dc855;
+  border: 3px solid #4dc855;
   border-radius: 3px;
   justify-content: center;
   transition: 0.2s;
