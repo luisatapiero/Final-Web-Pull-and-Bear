@@ -1595,4 +1595,95 @@ video {
 }
 
 
+#carrito {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
+#lista-carrito {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#lista-carrito th,
+#lista-carrito td {
+  padding: 10px;
+  text-align: left;
+}
+
+#lista-carrito th {
+  font-weight: bold;
+}
+
+#carrito-body tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#vaciar-carrito {
+  display: block;
+  width: 100px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  text-align: center;
+  background-color: #ff0000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+#vaciar-carrito:hover {
+  background-color: #cc0000;
+}
+
+#carrito.hidden {
+  display: none;
+}
+
+#logueado{
+    padding: 8px;
+    background-color: #0a0a0a;
+    display: grid;
+  justify-items: center; /* Para alinear horizontalmente los elementos al centro */
+  align-items: center;
+  
+}
+
+#logueado button{
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 0px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 80px;
+  height: 35px;
+  color: #e43d3d;
+  background-color: transparent;
+  border: 2px solid #e43d3d;
+  border-radius: 3px;
+  justify-content: center;
+  transition: 0.2s;
+
+}
+
+#logueado button:hover{
+  cursor: pointer;
+  color: #0a0a0a;
+  background-color: #e43d3d;
+  border: 3px solid #e43d3d;
+  border-radius: 3px;
+  justify-content: center;
+  transition: 0.2s;
+
+}
+
+
+
 

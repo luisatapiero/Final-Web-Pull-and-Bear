@@ -5,6 +5,7 @@
   const passwordInput = document.getElementById('contrasena');
   const loginButton = document.getElementById('btn-login');
   const logoutButton = document.getElementById('logout-button');
+  const logueado = document.getElementById('logueado');
   const adminButton = document.getElementById('admin-button');
 
   if (loginButton) {
@@ -48,11 +49,15 @@
     // Función para mostrar el botón de cierre de sesión
     function showLogoutButton() {
       logoutButton.style.display = 'block';
+      logueado.style.display = 'block';
+
+      
     }
 
     // Función para ocultar el botón de cierre de sesión
     function hideLogoutButton() {
       logoutButton.style.display = 'none';
+      logueado.style.display = 'none';
     }
 
     // Escuchar el cambio de estado de autenticación

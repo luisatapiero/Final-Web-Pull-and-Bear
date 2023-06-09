@@ -179,33 +179,39 @@ buttonleft.addEventListener("click", e => {
     }
 })
 
-const carrito = this.querySelector('#carrito');
-        const carritoBody = this.querySelector('#carrito-body');
-        const products = JSON.parse(localStorage.getItem('cart-products')) || [];
+/*
+const carrito = document.getElementById('carrito');
+const carritoBody = document.getElementById('carrito-body');
+const products = JSON.parse(localStorage.getItem('cart-products')) || [];
 
-        carritoBody.innerHTML = ''; // Limpiar el contenido existente
+carritoBody.innerHTML = ''; // Limpiar el contenido existente
 
-        products.forEach((product) => {
-            const row = document.createElement('tr');
+products.forEach((product) => {
+  const row = document.createElement('tr');
 
-            const imageCell = document.createElement('td');
-            const nameCell = document.createElement('td');
-            const priceCell = document.createElement('td');
+  const imageCell = document.createElement('td');
+  const nameCell = document.createElement('td');
+  const priceCell = document.createElement('td');
 
-            imageCell.innerHTML = `<img src="${product.imagen}" alt="${product.name}" width="50" height="50">`;
-            nameCell.textContent = product.name;
-            priceCell.textContent = product.precio;
+  console.log('${product.imagen}')
 
-            row.appendChild(imageCell);
-            row.appendChild(nameCell);
-            row.appendChild(priceCell);
+  imageCell.innerHTML = `<img src="${product.imagen}" alt="${product.name}" width="50" height="50">`;
+  nameCell.textContent = product.name;
+  priceCell.textContent = product.precio;
 
-            carritoBody.appendChild(row);
-        });
+  row.appendChild(imageCell);
+  row.appendChild(nameCell);
+  row.appendChild(priceCell);
 
-        carrito.addEventListener('click', () => {
-            carrito.classList.toggle('hidden');
-        });
+  carritoBody.appendChild(row);
+});
+
+const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
+
+vaciarCarritoBtn.addEventListener('click', () => {
+  // Lógica para vaciar el carrito
+});
+
 
 /*const navBtn = document.querySelector('.nav-burger');
 const nav = document.getElementById('main-nav');
