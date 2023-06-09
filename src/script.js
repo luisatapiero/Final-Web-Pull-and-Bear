@@ -179,6 +179,34 @@ buttonleft.addEventListener("click", e => {
     }
 })
 
+const carrito = this.querySelector('#carrito');
+        const carritoBody = this.querySelector('#carrito-body');
+        const products = JSON.parse(localStorage.getItem('cart-products')) || [];
+
+        carritoBody.innerHTML = ''; // Limpiar el contenido existente
+
+        products.forEach((product) => {
+            const row = document.createElement('tr');
+
+            const imageCell = document.createElement('td');
+            const nameCell = document.createElement('td');
+            const priceCell = document.createElement('td');
+
+            imageCell.innerHTML = `<img src="${product.imagen}" alt="${product.name}" width="50" height="50">`;
+            nameCell.textContent = product.name;
+            priceCell.textContent = product.precio;
+
+            row.appendChild(imageCell);
+            row.appendChild(nameCell);
+            row.appendChild(priceCell);
+
+            carritoBody.appendChild(row);
+        });
+
+        carrito.addEventListener('click', () => {
+            carrito.classList.toggle('hidden');
+        });
+
 /*const navBtn = document.querySelector('.nav-burger');
 const nav = document.getElementById('main-nav');
 
