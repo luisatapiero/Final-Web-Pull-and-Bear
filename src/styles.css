@@ -1581,3 +1581,18 @@ video {
 
 }
 
+.admin-section{
+  background: aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-section form{
+  display: flex;
+  flex-direction: column;
+}
+
+
+
