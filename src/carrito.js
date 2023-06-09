@@ -1,5 +1,6 @@
 const selectedColor = colorSelect.options[colorSelect.selectedIndex].text;
 
+/*Carrito*/
 const carritoBody = document.getElementById('carrito-body');
 // Obtener referencia al elemento del DOM que contiene la tabla del carrito
 const listaCarrito = document.getElementById('lista-carrito');
