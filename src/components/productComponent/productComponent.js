@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { auth, db, storage } from "../../firebase.js";
@@ -213,6 +213,10 @@ class ProductComponent extends HTMLElement {
         }];
     
         await setDoc(userDocRef, { cart: updatedCart }, { merge: true });
+
+    // Emitir el evento personalizado
+        const event = new CustomEvent('productAddedToCart', { detail: updatedCart });
+        window.dispatchEvent(event);
     
         alert('Producto agregado al carrito con éxito');
       } catch (error) {

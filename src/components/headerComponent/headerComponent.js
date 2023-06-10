@@ -1,5 +1,8 @@
 import './headerComponent.css'
 import { logOut } from '../../firebase.js';
+import { getAuth } from "firebase/auth";
+import { doc, getDoc, getDocs, query, collection, where } from "firebase/firestore";
+import { auth, db } from "../../firebase.js";
 
 class HeaderComponent extends HTMLElement {
 
@@ -28,6 +31,11 @@ class HeaderComponent extends HTMLElement {
       nav.classList.toggle('hidden')
 
     });
+
+    window.addEventListener('productAddedToCart', (event) => {
+      const cartData = event.detail;
+      this.updateCartView(cartData);
+    });
   }
 
   // this is how you declare which props are you interested in
@@ -42,6 +50,43 @@ class HeaderComponent extends HTMLElement {
     this[propName] = newValue;
     this.logged = this.getAttribute('logged');
     this.render();
+  }
+
+  async updateCartView(cartData) {
+    const carrito = this.querySelector('#carrito');
+    const carritoBody = this.querySelector('#carrito-body');
+
+    try {
+      // Obtén la referencia al documento del usuario actual
+      const user = auth.currentUser;
+      const userDocRef = doc(db, "users", user.uid);
+
+      const docSnap = await getDoc(userDocRef);
+      if (docSnap.exists()) {
+        const userData = docSnap.data();
+        const cartItems = userData.cart;
+
+        // Clear previous cart items
+        carritoBody.innerHTML = '';
+
+        // Iterate over cart items and add them to the cart view
+        cartItems.forEach((cartItem) => {
+          const { url_1, name, price } = cartItem;
+
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td><img src="${url_1}" alt="${name}" style="width: 70px; height: 100px;" /></td>
+            <td>${name}</td>
+            <td>${price}</td>
+            <td><button class="remove-item">Remove</button></td>
+          `;
+
+          carritoBody.appendChild(row);
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   // this is our main html for the component, and is reRendered when attr changes
@@ -126,8 +171,6 @@ class HeaderComponent extends HTMLElement {
       
     </header>
 
-    <script src="../../json.js"></script>
-
           `;
 
     const button = this.querySelector('button');
@@ -141,37 +184,35 @@ class HeaderComponent extends HTMLElement {
       logoutButton.style.display = 'none';
       console.log('No logueadooo')
     }
+    
+    
+  
+    
 
-    const carrito = this.querySelector('#carrito');
-    const carritoBody = this.querySelector('#carrito-body');
-    const products = JSON.parse(localStorage.getItem('cart-products')) || [];
+    console.log('Configurando evento de clic en el carrito');
 
-    carritoBody.innerHTML = ''; // Limpiar el contenido existente
-
-    products.forEach((product) => {
-      const row = document.createElement('tr');
-
-      const imageCell = document.createElement('td');
-      const nameCell = document.createElement('td');
-      const priceCell = document.createElement('td');
-
-      imageCell.innerHTML = `<img src="${product.imagen}" alt="${product.name}" width="50" height="50">`;
-      nameCell.textContent = product.name;
-      priceCell.textContent = product.precio;
-
-      row.appendChild(imageCell);
-      row.appendChild(nameCell);
-      row.appendChild(priceCell);
-
-      carritoBody.appendChild(row);
-    });
 
     carrito.addEventListener('click', () => {
+      console.log("abre carro")
+
       carrito.classList.toggle('hidden');
+
     });
+
+
+      
+    
+
+
+
+
 
 
   }
+
+
+
+
 
 
   handleButton() {
