@@ -1,5 +1,5 @@
 import { getAuth } from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { auth, db, storage } from "../../firebase.js";
 
@@ -252,7 +252,31 @@ class ProductComponent extends HTMLElement {
     getCartData();
     
     
+    window.addEventListener('clearCart', () => {
+      clearCart();
+    });
 
+    async function clearCart() {
+      try {
+        // Obtén la referencia al documento del usuario actual
+        const user = auth.currentUser;
+        const userDocRef = doc(db, 'users', user.uid);
+    
+        // Borra el campo "cart" en el documento del usuario
+        await updateDoc(userDocRef, {
+          cart: []
+        });
+    
+        // Emitir el evento personalizado con el carrito vacío
+        const event = new CustomEvent('cartDataUpdated', { detail: [] });
+        window.dispatchEvent(event);
+    
+        alert('Carrito vaciado con éxito');
+      } catch (error) {
+        alert('Error al vaciar el carrito: ' + error);
+      }
+    }
+    
 
 
 

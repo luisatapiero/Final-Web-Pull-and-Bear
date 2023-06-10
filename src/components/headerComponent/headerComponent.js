@@ -42,6 +42,13 @@ class HeaderComponent extends HTMLElement {
       this.updateCartView(cartData);
     });
 
+    const clearCartBtn = document.querySelector('#vaciar-carrito'); // Reemplaza con el selector correcto del botón
+
+    clearCartBtn.addEventListener('click', () => {
+      const event = new CustomEvent('clearCart');
+      window.dispatchEvent(event);
+    });
+
 
 
   }
@@ -60,13 +67,13 @@ class HeaderComponent extends HTMLElement {
     this.render();
   }
 
-  
+
 
   async updateCartView(cartData) {
     const carrito = this.querySelector('#carrito');
     const carritoBody = this.querySelector('#carrito-body');
 
-    
+
 
     try {
       // Obtén la referencia al documento del usuario actual
@@ -90,7 +97,6 @@ class HeaderComponent extends HTMLElement {
             <td><img src="${url_1}" alt="${name}" style="width: 70px; height: 100px;" /></td>
             <td>${name}</td>
             <td>${price}</td>
-            <td><button class="remove-item">Remove</button></td>
           `;
 
           carritoBody.appendChild(row);
@@ -166,9 +172,9 @@ class HeaderComponent extends HTMLElement {
           <table id="lista-carrito">
             <thead>
               <tr>
-                <th>Imagen</th>
-                <th>Nombre</th>
-                <th>Precio</th>
+                <th>Product</th>
+                <th>Name</th>
+                <th>Price</th>
                 <th></th>
               </tr>
             </thead>
@@ -196,10 +202,10 @@ class HeaderComponent extends HTMLElement {
       logoutButton.style.display = 'none';
       console.log('No logueadooo')
     }
-    
-    
-  
-    
+
+
+
+
 
     console.log('Configurando evento de clic en el carrito');
 
@@ -212,8 +218,8 @@ class HeaderComponent extends HTMLElement {
     });
 
 
-      
-    
+
+
 
 
 
