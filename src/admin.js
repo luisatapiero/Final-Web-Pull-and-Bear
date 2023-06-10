@@ -67,4 +67,5 @@ async function uploadProduct(e) {
 
   await addProduct(newObj);
   await retrieveProducts();
+  alert("Se ha añadido un nuevo producto")
 }
