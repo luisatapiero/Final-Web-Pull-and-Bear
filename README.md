@@ -8,27 +8,27 @@ Nos gustaría que revisaras las pruebas unitarias y la funcionalidad del carrito
 
 # Accesos
 El usuario admin es:
-email: admin@gmail.com
+email: admin@gmail.com\
 contraseña: admin123
 
 Usuarios prueba que ya están registrados:
-email: prueba8@gmail.com
+email: prueba8@gmail.com\
 contraseña: 123456
 
 # Agregar productos
 Te dejamos estos datos por si quieres probar la funcionalidad de agregar productos:
 
-Name of the Product: IRON MAIDEN T-SHIRT
-Price of the Product: $29.90
-type of the Product: Short sleeves
-Image 1 of the Product: https://static.pullandbear.net/2/photos//2023/I/0/1/p/7241/396/833/7241396833_2_1_8.jpg?t=1686233187267&imwidth=1920
-Image 2 of the Product: https://static.pullandbear.net/2/photos//2023/I/0/1/p/7241/396/833/7241396833_2_3_8.jpg?t=1686233187267&imwidth=1920
-Image 3 of the Product: https://static.pullandbear.net/2/photos//2023/I/0/1/p/7241/396/833/7241396833_2_4_8.jpg?t=1686233187267&imwidth=1920
-Image 4 of the Product: https://static.pullandbear.net/2/photos//2023/I/0/1/p/7241/396/833/7241396833_2_6_8.jpg?t=1683639231847&imwidth=1920
-Image 5 of the Product: https://static.pullandbear.net/2/photos//2023/I/0/1/p/7241/396/833/7241396833_2_8_8.jpg?t=1683639231847&imwidth=1920
-Color 1 of the Product: Black
-Color 2 of the Product: White
-Color 1 of the Product: Red
-category of the Product: T-shirt
-description of the Product: Iron Maiden licensed T-shirt with front graphic, round neck and short sleeves.
-gender of the Product: Woman
+Name of the Product: IRON MAIDEN T-SHIRT\
+Price of the Product: 29.90\
+type of the Product: Short sleeves\
+Image 1 of the Product: https://static.pullandbear.net/2/photos//2023/I/0/1/p/7241/396/833/7241396833_2_1_8.jpg?t=1686233187267&imwidth=1920 \
+Image 2 of the Product: https://static.pullandbear.net/2/photos//2023/I/0/1/p/7241/396/833/7241396833_2_3_8.jpg?t=1686233187267&imwidth=1920 \
+Image 3 of the Product: https://static.pullandbear.net/2/photos//2023/I/0/1/p/7241/396/833/7241396833_2_4_8.jpg?t=1686233187267&imwidth=1920 \
+Image 4 of the Product: https://static.pullandbear.net/2/photos//2023/I/0/1/p/7241/396/833/7241396833_2_6_8.jpg?t=1683639231847&imwidth=1920 \
+Image 5 of the Product: https://static.pullandbear.net/2/photos//2023/I/0/1/p/7241/396/833/7241396833_2_8_8.jpg?t=1683639231847&imwidth=1920 \
+Color 1 of the Product: Black\ 
+Color 2 of the Product: White\
+Color 1 of the Product: Red\
+category of the Product: T-shirt\
+description of the Product: Iron Maiden licensed T-shirt with front graphic, round neck and short sleeves.\
+gender of the Product: Woman\
