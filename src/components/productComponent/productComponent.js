@@ -1,3 +1,8 @@
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { auth, db, storage } from "../../firebase.js";
+
 class ProductComponent extends HTMLElement {
   static get observedAttributes() {
     return ['url_1', 'url_2', 'url_3', 'url_4', 'url_5', 'type', 'name', 'description', 'category', 'price', 'color1', 'color2', 'color3'];
@@ -23,7 +28,7 @@ class ProductComponent extends HTMLElement {
     })
   }
   connectedCallback() {
-    
+
 
     this.render();
 
@@ -154,7 +159,7 @@ class ProductComponent extends HTMLElement {
       smallImg.addEventListener("click", () => {
         const fullImg = this.shadowRoot.querySelector("#imageBox");
         fullImg.src = smallImg.src;
-        
+
       });
     });
 
@@ -163,7 +168,7 @@ class ProductComponent extends HTMLElement {
     const popup = this.shadowRoot.querySelector('#image-popup');
     const popupImage = this.shadowRoot.querySelector('.popup-image');
     const popupOverlay = this.shadowRoot.querySelector('.popup-overlay');
-    
+
     // Agregar un event listener a cada elemento
     popupTriggers.forEach((trigger) => {
       trigger.addEventListener('click', () => {
@@ -173,7 +178,7 @@ class ProductComponent extends HTMLElement {
         console.log('zoom');
       });
     });
-    
+
     popupOverlay.addEventListener('click', () => {
       popup.style.display = 'none';
       console.log('fuera');
@@ -182,47 +187,84 @@ class ProductComponent extends HTMLElement {
 
     /*Función de Agregar al Carrito*/
 
-    addToBagBtn.addEventListener('click', () => {
-      let products = [];
+    addToBagBtn.addEventListener('click', async () => {
+      try {
+        const productName = this.name; // Reemplaza con el nombre real del producto
+        const productPhoto = this.url_1; // Reemplaza con la URL real de la foto del producto
+        const productPrice = this.price; // Reemplaza con el precio real del producto
     
-      if (localStorage.getItem("cart-products"))
-        products = JSON.parse(localStorage.getItem("cart-products"));
-        
-      const colorSelect = this.shadowRoot.getElementById('colour');
-      const sizeSelect = this.shadowRoot.getElementById('size');
-      const selectedColor = colorSelect.options[colorSelect.selectedIndex].text;
+        // Obtén la referencia al documento del usuario actual
+        const user = auth.currentUser;
+        const userDocRef = doc(db, 'users', user.uid);
     
-      const currentProd = products.find(prod => prod.name === this.name && prod.url_1 === this.url_1 && prod.precio === this.precio && prod.size === sizeSelect.value && prod.color === selectedColor);
-      
-      if (currentProd) {
-        const amount = parseInt(currentProd.quantity)
-        currentProd.quantity = amount + parseInt(inputQuantity.value);
-      } else {
-        products.push({
-          quantity: parseInt(inputQuantity.value),
-          name: this.name,
-          imagen: this.url_1,
-          precio: this.price,
-          size: sizeSelect.value,
-          color: selectedColor
-        });
+        // Obtén el documento actual del usuario
+        const userDocSnap = await getDoc(userDocRef);
+        const userDocData = userDocSnap.data();
+    
+        // Agrega el producto al carrito
+        const updatedCart = userDocData.cart ? [...userDocData.cart, { 
+          name: productName,
+          url_1: productPhoto,
+          price: productPrice
+        }] : [{
+          name: productName,
+          url_1: productPhoto,
+          price: productPrice
+        }];
+    
+        await setDoc(userDocRef, { cart: updatedCart }, { merge: true });
+    
+        alert('Producto agregado al carrito con éxito');
+      } catch (error) {
+        alert('Error al agregar el producto al carrito: '+error);
       }
-    
-      localStorage.setItem('cart-products', JSON.stringify(products));
     });
+    
+    
 
-  }
 
-/*---------------------------- */
 
-  attributeChangeCallback(propName, oldValue, newValue) {
-    this[propName] = newValue;
-    this.render();
 
-  }
 
-  render() {
-    this.shadowRoot.innerHTML = `
+    /*let products = [];
+  
+    if (localStorage.getItem("cart-products"))
+      products = JSON.parse(localStorage.getItem("cart-products"));
+      
+    const colorSelect = this.shadowRoot.getElementById('colour');
+    const sizeSelect = this.shadowRoot.getElementById('size');
+    const selectedColor = colorSelect.options[colorSelect.selectedIndex].text;
+  
+    const currentProd = products.find(prod => prod.name === this.name && prod.url_1 === this.url_1 && prod.precio === this.precio && prod.size === sizeSelect.value && prod.color === selectedColor);
+    
+    if (currentProd) {
+      const amount = parseInt(currentProd.quantity)
+      currentProd.quantity = amount + parseInt(inputQuantity.value);
+    } else {
+      products.push({
+        quantity: parseInt(inputQuantity.value),
+        name: this.name,
+        imagen: this.url_1,
+        precio: this.price,
+        size: sizeSelect.value,
+        color: selectedColor
+      });
+    }*/
+
+    /*localStorage.setItem('cart-products', JSON.stringify(products));
+  });
+**/
+}
+
+
+attributeChangeCallback(propName, oldValue, newValue) {
+  this[propName] = newValue;
+  this.render();
+
+}
+
+render() {
+  this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="./components/productComponent/productComponent.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         
@@ -489,16 +531,16 @@ class ProductComponent extends HTMLElement {
 
 
 
-  }
+}
 
 
   set url(val) {
-    this.setAttribute('url', val);
-  }
+  this.setAttribute('url', val);
+}
 
   get url() {
-    return this.getAttribute('url');
-  }
+  return this.getAttribute('url');
+}
 
 
 }

@@ -1,7 +1,9 @@
+
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { auth, db, storage } from "./firebase"; // Asegúrate de importar `storage` desde firebase.js
+import { db, auth, storage } from "./firebase.js";
+
 
 
 const config = {

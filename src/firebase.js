@@ -28,3 +28,4 @@ export async function logOut() {
       console.error(error)
   };
 }
+
