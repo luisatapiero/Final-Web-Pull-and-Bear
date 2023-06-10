@@ -36,6 +36,14 @@ class HeaderComponent extends HTMLElement {
       const cartData = event.detail;
       this.updateCartView(cartData);
     });
+
+    window.addEventListener('cartDataUpdated', (event) => {
+      const cartData = event.detail;
+      this.updateCartView(cartData);
+    });
+
+
+
   }
 
   // this is how you declare which props are you interested in
@@ -52,9 +60,13 @@ class HeaderComponent extends HTMLElement {
     this.render();
   }
 
+  
+
   async updateCartView(cartData) {
     const carrito = this.querySelector('#carrito');
     const carritoBody = this.querySelector('#carrito-body');
+
+    
 
     try {
       // Obtén la referencia al documento del usuario actual

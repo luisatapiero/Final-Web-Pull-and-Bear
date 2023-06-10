@@ -184,6 +184,9 @@ class ProductComponent extends HTMLElement {
       console.log('fuera');
     });
 
+    
+
+
 
     /*Función de Agregar al Carrito*/
 
@@ -223,6 +226,30 @@ class ProductComponent extends HTMLElement {
         alert('Error al agregar el producto al carrito: '+error);
       }
     });
+
+    async function getCartData() {
+      try {
+        // Obtén la referencia al documento del usuario actual
+        const user = auth.currentUser;
+        const userDocRef = doc(db, "users", user.uid);
+    
+        const docSnap = await getDoc(userDocRef);
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+          const cartItems = userData.cart;
+    
+          // Emitir el evento personalizado con los datos del carrito
+          const event = new CustomEvent('cartDataUpdated', { detail: cartItems });
+          window.dispatchEvent(event);
+    
+          return cartItems;
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    
+    getCartData();
     
     
 
