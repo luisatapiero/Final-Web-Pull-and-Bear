@@ -35,8 +35,7 @@ Te dejamos estos datos por si quieres probar la funcionalidad de agregar product
 **description of the Product:** Iron Maiden licensed T-shirt with front graphic, round neck and short sleeves.\
 **gender of the Product:** Woman
 
-Al subir todos los datos en Add a product te saldra una alerta que te diga que el producto esta agregado en las cards de sales:
-El Producto te saldra asi
+Al subir todos los datos en Add a product te saldra una alerta que te diga que el producto esta agregado en las cards de sales: el Producto te saldra asi
 ![image](https://github.com/luisatapiero/Final-Web-Pull-and-Bear/assets/81645472/20badb15-261e-415b-8973-b57c3f77085e)
 
 Pd: Natalia no tiene muchos commits porque se tocó trasladar los archivos por problemas técnicos, pero aquí hay algunos commits realizados por ella:
