@@ -3,6 +3,8 @@ Hola, profe! 😄
 Nos gustaría que revisaras las pruebas unitarias y la funcionalidad del carrito:
   1. Las pruebas unitarias no te las mostramos en la sustentación, pero ya hay pruebas unitarias para los componentes "ComponentExample" y "ProductComponent"
   2. El carrito que te mostramos en la entrega no estaba funcionando bien y mostraba los productos desde el localstorage. Por lo que, en esta última versión ya está conectado con el Firebase, puedes probar que en el detalle del producto se puede ver lo que el usuario tiene en el carro (haciendo hover al ícono de bolsa) y puedes agregar productos que también se mostrarán allí. Cada usuario tiene un carrito único y también se puede vaciar.
+  3. Aquí encontrarás un video de demostración de todo lo que se logró del código:
+  https://youtu.be/HSgPY3q1fJg
 
 ![image](https://github.com/luisatapiero/Final-Web-Pull-and-Bear/assets/79235499/9ddd9327-ccc0-4876-9a5a-7563efbd8911)
 
@@ -36,4 +38,10 @@ Te dejamos estos datos por si quieres probar la funcionalidad de agregar product
 Al subir todos los datos en Add a product te saldra una alerta que te diga que el producto esta agregado en las cards de sales:
 El Producto te saldra asi
 ![image](https://github.com/luisatapiero/Final-Web-Pull-and-Bear/assets/81645472/20badb15-261e-415b-8973-b57c3f77085e)
+
+Pd: Natalia no tiene muchos commits porque se tocó trasladar los archivos por problemas técnicos, pero aquí hay algunos commits realizados por ella:
+https://github.com/luisatapiero/Pull-and-Bear/commits/main
+
+Gracias, esperemos le agrade el trabajo 😄
+
 
