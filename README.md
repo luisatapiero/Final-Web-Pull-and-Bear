@@ -41,6 +41,6 @@ Al subir todos los datos en Add a product te saldra una alerta que te diga que e
 Pd: Natalia no tiene muchos commits porque se tocó trasladar los archivos por problemas técnicos, pero aquí hay algunos commits realizados por ella:
 https://github.com/luisatapiero/Pull-and-Bear/commits/main
 
-Gracias, esperemos le agrade el trabajo 😄
+Gracias, esperemos que le agrade el trabajo 😄
 
 
